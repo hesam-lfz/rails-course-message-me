@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   root to: "chatroom#index"
   get "login", to: "sessions#new"
+  delete "logout", to: "sessions#destroy"
   get "/up/", to: "up#index", as: :up
   get "/up/databases", to: "up#databases", as: :up_databases
 
