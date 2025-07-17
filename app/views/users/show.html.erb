@@ -1,0 +1,24 @@
+<h2>User details</h2>
+
+<%= gravatar_for @user %>
+<p><strong>Username: </strong><%= @user.username %></p>
+<p><strong>Email: </strong><%= @user.email %></p>
+<% if logged_in? && (current_user == @user || current_user.admin?) %>
+    <div>
+        <%= link_to "Edit profile", edit_user_path(@user) %> 
+        <%= link_to "Delete profile", user_path(@user), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: 'danger' if current_user.admin? %> 
+    </div>
+<% end %>
+
+<h2>User articles</h2>
+<%= will_paginate @articles %>
+<%= render 'articles/article' %>
+<%= will_paginate @articles %>
+
+<div>
+    <%= link_to '←', articles_path %> 
+    <% if logged_in? && (current_user == @user || current_user.admin?) %>
+        <%= link_to 'Edit', edit_user_path(@user) %>  
+        <%= link_to "Delete profile", user_path(@user),  data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: 'danger' if current_user.admin? %> 
+    <% end %>
+</div>

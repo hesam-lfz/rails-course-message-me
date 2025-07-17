@@ -1,0 +1,34 @@
+<section>
+    <ul>
+    <strong>
+    <li>
+            <div>
+            <span>Username</span>
+            <span>Email</span>
+            <span>#Articles</span>
+            <span>Joined</span>
+            <span>Actions</span>
+            </div>
+        </li>
+        </strong>
+    <% @users.each do |user| %>
+        <li>
+            <div>                
+                <span><%= link_to user.username, user %></span>
+                <span><%= user.email %></span>
+                <span><%= pluralize(user.articles.length, 'article') %></span>
+                <span>Joined <%= time_ago_in_words(user.created_at) %> ago</span> 
+                <div>
+                    <span><%= link_to 'Show', user %></span>
+                    <% if logged_in? && (current_user == user || current_user.admin?) %>
+                        <span><%= link_to 'Edit', edit_user_path(user) %></span>
+                    <% end %>
+                    <% if logged_in? && current_user.admin? %>
+                        <span><%= link_to 'Delete', user_path(user), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: 'danger' %></span>
+                    <% end %>
+                </div>
+            </div>
+        </li>
+    <% end %>
+</section>
+</ul>

@@ -1,0 +1,23 @@
+<%= render 'shared/errors', obj: @user %>
+<%= form_with(model: @user, local: true, data: { turbo: false }) do |f| %>
+    <p>
+        <%= f.label :username %>
+        <br />
+        <%= f.text_field :username, placeholder: 'Enter username' %>
+    </p>
+    <p>
+        <%= f.label :email %>
+        <br />
+        <%= f.email_field :email, placeholder: 'Enter email address' %>
+    </p>
+    <p>
+        <%= f.label :password %>
+        <br />
+        <%= f.password_field :password, placeholder: 'Enter a password' %>
+    </p>
+
+    <p>
+        <%= f.submit(@user.new_record? ? "Sign up" : "Update") %>
+    </p>
+
+<% end %>
