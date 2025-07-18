@@ -1,4 +1,4 @@
-<header class="absolute inset-x-0 top-0 z-50">
+<header class="header relative inset-x-0 top-0 z-50">
     <nav class="flex items-center justify-between p-6 lg:px-8" aria-label="Global">
         <div class="flex lg:flex-1">
             <a href="." class="-m-1.5 p-1.5">
@@ -30,7 +30,7 @@
                 <div id="dropdownNavbar" class="z-10 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow-sm w-44 dark:bg-gray-700 dark:divide-gray-600 text-white">
                   <% if logged_in? %>
                     <div class="py-1">
-                      <%= link_to("Sign out", logout_path, class: 'button white') %>
+                      <%= link_to("Sign out", logout_path, class: 'button white', data: { turbo_method: :delete }) %>
                     </div>                    
                   <% else %>
                     <div class="py-1">                                                       
@@ -78,5 +78,12 @@
           </div>
         </div>
       </div>
+    </div>
+    <div class="flex flex-col items-center justify-center">        
+    <%= image_tag asset_path("favicon.ico") %>
+    <h1 class="text-5xl font-semibold tracking-tight text-balance text-gray-900 sm:text-7xl">Lemon\Chat</h1>
+    <p class="mt-8 text-lg font-medium text-pretty text-gray-500 sm:text-xl/8">
+      <%= (logged_in? ? 'Welcome to group chat ' + current_user.username : 'Log in to start chatting')  %> ...
+    </p>
     </div>
 </header>

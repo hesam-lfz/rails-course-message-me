@@ -48,6 +48,9 @@ gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
 # Use Actice Model has_secure_password
 gem "bcrypt", "~> 3.1.7"
 
+# Pagination:
+gem 'will_paginate', '~> 4.0'
+
 # Execute jobs in the background [https://github.com/mperham/sidekiq]
 gem "sidekiq", "~> 8.0"
 

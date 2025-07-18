@@ -10,8 +10,6 @@ class UsersController < ApplicationController
   end
 
   def show
-    #@articles = @user.articles
-    @articles = @user.articles.paginate(page: params[:page], per_page: 5)
     
   end
   
@@ -24,10 +22,9 @@ class UsersController < ApplicationController
     if @user.save
         # @user.toggle!(:admin) if @user.username == 'admin'
         # render plain: @user.inspect
-        # redirect_to article_path(@user)
         session[:user_id] = @user.id
         flash[:notice] = "User #{@user.username} created."
-        redirect_to articles_path
+        redirect_to root_path
     else
         render 'new'
     end
@@ -47,12 +44,9 @@ class UsersController < ApplicationController
 
   def destroy
     @user.destroy
-    session[:user_id] = nil if @user == current_user
-    @user.articles do |article|
-
-    end
-    flash[:notice] = "Profile and its articles deleted"
-    redirect_to articles_path
+    session[:user_id] = nil if @user == current_user    
+    flash[:notice] = "Profile and its resources deleted"
+    redirect_to root_path
   end
 
 

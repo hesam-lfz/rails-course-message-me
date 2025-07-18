@@ -1,1 +1,85 @@
 @import "tailwindcss" source("/app");
+
+body {
+    font-family: monospace;
+}
+
+button {
+    cursor: pointer;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li>div.list-div {
+    display: flex;
+    justify-content: space-around;
+    border-style: solid;
+    border-width: 0 0 1px 0;
+}
+
+li div.list-div span {
+    flex-basis: calc(100% / 3);
+    padding: 10px;
+}
+
+div {
+    padding: 10px;
+}
+
+.header-div>span a {
+    margin: 0 5px;
+}
+
+section {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+a,
+input[type='submit'] {
+    border-style: solid;
+    border-radius: 5px;
+    padding: 5px;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+.right {
+    float: right;
+}
+
+.left {
+    float: left;
+}
+
+.header {
+    padding: 0 0 30px 0;
+}
+
+input:not([type='submit']),
+select {
+    width: 50vw;
+}
+
+.alert {
+    border-style: groove;
+    border-width: 2px;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px;
+    background-color: whitesmoke;
+    font-style: oblique;
+    font-weight: 800;
+    font-size: large;
+}
+
+.danger {
+    color: red;
+}
+
+.success {
+    color: green;
+}

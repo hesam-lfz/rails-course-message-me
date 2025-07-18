@@ -2,10 +2,9 @@
     <ul>
     <strong>
     <li>
-            <div>
+            <div class="list-div">
             <span>Username</span>
             <span>Email</span>
-            <span>#Articles</span>
             <span>Joined</span>
             <span>Actions</span>
             </div>
@@ -13,10 +12,9 @@
         </strong>
     <% @users.each do |user| %>
         <li>
-            <div>                
+            <div class="list-div">                
                 <span><%= link_to user.username, user %></span>
                 <span><%= user.email %></span>
-                <span><%= pluralize(user.articles.length, 'article') %></span>
                 <span>Joined <%= time_ago_in_words(user.created_at) %> ago</span> 
                 <div>
                     <span><%= link_to 'Show', user %></span>
