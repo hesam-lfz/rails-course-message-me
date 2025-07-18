@@ -1,35 +1,16 @@
-<section>
-    <ul>
-    <strong>
-    <li>
-            <div class="list-div">
-                <span>Creator</span>
-                <span>Body</span>            
-                <span>Created at</span>            
-                <span>Actions</span>
-            </div>
-        </li>
-        </strong>
-    <% @messages.each do |message| %>
-        <li>
-            <div class="list-div">                
-                <span><%= link_to message.user.username, user_path(message.user) %></span>
-                <span><%= message.body %></span>                 
-                <span><%= time_ago_in_words(message.created_at) %> ago</span> 
-                <div>
-                    <span><%= link_to 'Show', message_path(message) %></span>
-                    <% if logged_in? && (current_user == message.user || current_user.admin?) %>
-                        <span><%= link_to 'Edit', edit_message_path(message) %></span>
-                        <span><%= link_to 'Delete', message_path(message), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' } %></span>
-                    <% end %>
-                </div>
-            </div>
-        </li>
-    <% end %>
-</section>
-<% if logged_in? %>
-    <section>
-        <%= link_to 'New message', new_message_path %>
-    </section>
-<% end %>
-</ul>
+<li class="pb-3 sm:pb-4">
+    <div class="flex items-center space-x-4 rtl:space-x-reverse">
+        
+        <div class="flex-1 min-w-0">
+            <p class="text-sm font-medium text-gray-900 truncate dark:text-white">
+                <%= message.user.username %>
+            </p>
+            <p class="text-sm text-gray-500 truncate dark:text-gray-400">
+                <%= message.body %>
+            </p>
+            <p class="text-xs truncate dark:text-gray-500 mt-5">
+                <%= time_ago_in_words(message.created_at) %> ago
+            </p>
+        </div>
+    </div>
+</li>
