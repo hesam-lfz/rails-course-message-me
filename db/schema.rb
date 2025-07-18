@@ -24,4 +24,12 @@ ActiveRecord::Schema.define(version: 0) do
     t.string "password_digest"
     t.boolean "admin", default: false
   end
+
+  create_table "messages", force: :cascade do |t|
+    t.text "body"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer "user_id"
+  end
+
 end
