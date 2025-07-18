@@ -16,8 +16,9 @@ class MessagesController < ApplicationController
   end
 
   def create
-    @message = Message.new(message_params)
-    @message.user = current_user
+    #@message = Message.new(message_params)
+    #@message.user = current_user
+    @message = current_user.messages.build(message_params)
     if @message.save
         flash[:notice] = "Message created."
         redirect_to root_path
