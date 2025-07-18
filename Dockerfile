@@ -93,6 +93,7 @@ EXPOSE 8000
 # CMD ["rails", "generate", "integration_test", "create_category"]
 # CMD ["rails", "generate", "integration_test", "list_categories"]
 
+# CMD ["rails", "generate", "channel", "chatroom"]
 
 # CMD ["rails", "test"]
 # CMD ["rails", "test", "test/constrollers"]
