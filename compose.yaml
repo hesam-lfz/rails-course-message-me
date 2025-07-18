@@ -33,7 +33,7 @@ x-assets: &default-assets
       - "NODE_ENV=${NODE_ENV:-production}"
   env_file:
     - ".env"
-  profiles: ["assets"]
+  profiles: [ "assets" ]
   restart: "${DOCKER_RESTART_POLICY:-unless-stopped}"
   stop_grace_period: "3s"
   tty: true
@@ -50,9 +50,9 @@ services:
     environment:
       POSTGRES_USER: "${POSTGRES_USER}"
       POSTGRES_PASSWORD: "${POSTGRES_PASSWORD}"
-      # POSTGRES_DB: "${POSTGRES_DB}"
+      POSTGRES_DB: "${POSTGRES_DB}"
     image: "postgres:17.5-bookworm"
-    profiles: ["postgres"]
+    profiles: [ "postgres" ]
     restart: "${DOCKER_RESTART_POLICY:-unless-stopped}"
     stop_grace_period: "3s"
     volumes:
@@ -65,7 +65,7 @@ services:
           cpus: "${DOCKER_REDIS_CPUS:-0}"
           memory: "${DOCKER_REDIS_MEMORY:-0}"
     image: "redis:8.0.2-bookworm"
-    profiles: ["redis"]
+    profiles: [ "redis" ]
     restart: "${DOCKER_RESTART_POLICY:-unless-stopped}"
     stop_grace_period: "3s"
     volumes:
@@ -86,7 +86,7 @@ services:
       retries: 3
     ports:
       - "${DOCKER_WEB_PORT_FORWARD:-127.0.0.1:8000}:${PORT:-8000}"
-    profiles: ["web"]
+    profiles: [ "web" ]
 
   worker:
     <<: *default-app
@@ -97,7 +97,7 @@ services:
         limits:
           cpus: "${DOCKER_WORKER_CPUS:-0}"
           memory: "${DOCKER_WORKER_MEMORY:-0}"
-    profiles: ["worker"]
+    profiles: [ "worker" ]
 
   cable:
     <<: *default-app
@@ -110,7 +110,7 @@ services:
           memory: "${DOCKER_CABLE_MEMORY:-0}"
     ports:
       - "${DOCKER_CABLE_PORT_FORWARD:-127.0.0.1:28080}:${CABLE_PORT:-28080}"
-    profiles: ["cable"]
+    profiles: [ "cable" ]
 
   js:
     <<: *default-assets

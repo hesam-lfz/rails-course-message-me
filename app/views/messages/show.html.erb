@@ -1,0 +1,13 @@
+<h2>Message details</h2>
+
+<p><strong>Creator: </strong><%= link_to @message.user.username, @message.user %></p>
+<p><%= gravatar_for @message.user %></p>
+<p><strong>Body: </strong><%= @message.body %></p>
+<p><span><%= time_ago_in_words(@message.created_at) %> ago</p> 
+<div>
+    <%= link_to '←', messages_path %> 
+    <% if current_user == @message.user || current_user.admin? %>
+        <%= link_to 'Edit', edit_message_path(@message) %> 
+        <%= link_to 'Delete', message_path(@message), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' } %>
+    <% end %>
+</div>
