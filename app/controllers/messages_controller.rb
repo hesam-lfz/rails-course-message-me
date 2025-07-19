@@ -20,10 +20,12 @@ class MessagesController < ApplicationController
     #@message.user = current_user
     @message = current_user.messages.build(message_params)
     if @message.save
-        flash[:notice] = "Message created."
-        redirect_to root_path
+      ActionCable.server.broadcast "chatroom_channel", 
+        foo: message.body
+      flash[:notice] = "Message created."
+      redirect_to root_path
     else
-        render 'new'
+      render 'new'
     end
   end
 
