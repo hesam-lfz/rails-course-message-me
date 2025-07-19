@@ -100,3 +100,5 @@ EXPOSE 8000
 # CMD ["rails", "test", "test/constrollers/categories_controller_test.rb"]
 
 CMD ["rails", "s"]
+
+
