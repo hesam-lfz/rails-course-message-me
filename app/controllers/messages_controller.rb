@@ -20,9 +20,9 @@ class MessagesController < ApplicationController
     #@message.user = current_user
     @message = current_user.messages.build(message_params)
     if @message.save
+      flash[:notice] = "Message created."
       ActionCable.server.broadcast("chatroom_channel", 
         {body: render_message_to_send})      
-      flash[:notice] = "Message created."      
     else
       render 'new'
     end
@@ -53,6 +53,6 @@ class MessagesController < ApplicationController
   end
 
   def render_message_to_send 
-    render(partial: 'message', locals: {message: @message})
+    ApplicationController.render(partial: 'layouts/message', locals: {message: @message})
   end
 end

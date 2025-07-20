@@ -12,6 +12,6 @@ consumer.subscriptions.create("ChatroomChannel", {
   received(data) {
     // Called when there's incoming data on the websocket for this channel
     const $msgsContainer = document.querySelector('#chatroom-messages-container');
-    $msgsContainer.append(data.body);
+    $msgsContainer.insertAdjacentHTML('beforeend', data.body);
   }
 });
