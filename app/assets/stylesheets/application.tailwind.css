@@ -83,3 +83,15 @@ select {
 .success {
     color: green;
 }
+
+.h-75vh {
+    height: 75vh;
+}
+
+.h-100vh {
+    height: 100vh
+}
+
+.overflow-y-scroll {
+    overflow-y: scroll;
+}
