@@ -21,7 +21,7 @@ class MessagesController < ApplicationController
     @message = current_user.messages.build(message_params)
     if @message.save
       ActionCable.server.broadcast("chatroom_channel", 
-        {body: render_message_to_send})
+        {body: render_message_to_send})      
       flash[:notice] = "Message created."      
     else
       render 'new'
