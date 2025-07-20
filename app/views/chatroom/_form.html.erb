@@ -1,6 +1,6 @@
 <%= render 'shared/errors', obj: @message %>
 
-<%= form_with(model: @message, html: {class: "", role: "form"}, remote: true, data: { turbo: false }) do |f| %>    
+<%= form_with(model: @message, html: {class: "", role: "form"}, remote: true, data: { turbo: false, turbo_method: :post }) do |f| %>    
     <div class="w-full mb-4 border border-gray-200 rounded-lg bg-gray-50 dark:bg-gray-700 dark:border-gray-600">
         <div class="px-4 py-2 bg-white rounded-t-lg dark:bg-gray-800">                        
             <%= f.label "Your comment", for: "comment", class: "sr-only" %>
